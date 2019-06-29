@@ -1,0 +1,22 @@
+<h2 style="padding-top: 20px; padding-bottom: 20px;">Event Details </h2>
+Event Name: {{eventDetails.name}} <br/><br/>
+Event Date: {{eventDetails.eventdate}}<br/><br/>
+# Of Tickets: {{eventDetails.ticket}}<br/><br/>
+
+<button type="button" (click)="getEventTicketCount()" class="btn btn-primary">Refresh Ticket Counter</button> ==> {{eventTicketCount.eventTicketCount}}
+
+<div>
+    <h2 style="padding-top: 10px; padding-bottom: 10px;">Ticket List</h2>
+    <table>
+        <tr>
+            <td width="5%">No#</td>
+            <td width="20%">Ticket Number</td>
+            <td width="20%">Is Redeemed</td>
+        </tr>
+        <tr *ngFor="let ticket of tickets">
+            <td width="5%">{{ticket.id}}</td>
+            <td width="20%">{{ticket.ticket_number}}</td>
+            <td width="20%">{{ticket.is_redeem == 0 ? 'No' : 'Yes'}}</td>
+        </tr>
+    </table>
+</div>

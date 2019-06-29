@@ -1,0 +1,38 @@
+<h2 style="padding-top: 20px; padding-bottom: 20px;">Add Event </h2>
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <form (ngSubmit)="onSubmit(fm)" #fm="ngForm">
+            <div class="form-group">
+                <label for="name">Event Name:</label>
+                <input type="text" class="form-control" ngModel name="name">
+            </div>
+            <div class="form-group">
+                <label for="ticket">No of Tickets:</label>
+                <input type="text" class="form-control" ngModel name="ticket">
+            </div>
+            <div class="form-group">
+                <label for="eventdate">Event Date:</label>
+                <div>
+                    <input type="date" name="eventdate" [(ngModel)]="eventdate"/>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </div>
+</div>
+<div style="padding-top: 25px;">&nbsp;</div>
+<div *ngIf="eventData" class="clearfix">
+    <h2 style="padding-top: 10px; padding-bottom: 10px;">Events List</h2>
+    <table>
+        <tr class="table-header">
+            <th width="20%">Event Name</th>
+            <th width="20%">Event Date</th>
+            <th width="20%">Event Ticket #</th>
+        </tr>
+        <tr *ngFor="let event of eventData">
+            <td width="20%"><a [routerLink]="['/event-detail',event.id]">{{event.name}}</a></td>
+            <td width="20%"><a [routerLink]="['/event-detail',event.id]">{{event.eventdate}}</a></td>
+            <td width="20%"><a [routerLink]="['/event-detail',event.id]">{{event.ticket}}</a></td>
+        </tr>
+    </table>
+</div>
