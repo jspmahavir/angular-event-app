@@ -30,11 +30,6 @@ import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_
        }
 
        onSubmit(){
-        // return this._http.get('http://127.0.0.1:8000/api/redeem/'+this.ticketnumber, {headers: this.headers})
-        // .toPromise()
-        //         .then(res => res.json().data)
-        //           .catch(this.handleError);
-
         return this._http.get('http://127.0.0.1:8000/api/redeem/'+this.ticketnumber)
         .subscribe(result => {
           this.ticketStatus = result.json().response;

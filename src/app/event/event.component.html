@@ -27,7 +27,7 @@
         <tr class="table-header">
             <th width="20%">Event Name</th>
             <th width="20%">Event Date</th>
-            <th width="20%">Event Ticket #</th>
+            <th width="20%">Initial Event Ticket #</th>
         </tr>
         <tr *ngFor="let event of eventData">
             <td width="20%"><a [routerLink]="['/event-detail',event.id]">{{event.name}}</a></td>

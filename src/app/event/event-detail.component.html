@@ -1,16 +1,19 @@
 <h2 style="padding-top: 20px; padding-bottom: 20px;">Event Details </h2>
 Event Name: {{eventDetails.name}} <br/><br/>
 Event Date: {{eventDetails.eventdate}}<br/><br/>
-# Of Tickets: {{eventDetails.ticket}}<br/><br/>
+Initial No Of Tickets: {{eventDetails.ticket}}<br/><br/>
 
 <button type="button" (click)="getEventTicketCount()" class="btn btn-primary">Refresh Ticket Counter</button> ==> {{eventTicketCount.eventTicketCount}}
+<h2> Add More Tickets</h2>
+<input type="text" class="form-control-small" [(ngModel)]="ticketcount" [ngModelOptions]="{standalone: true}">
+<button type="button" (click)="addMoreTickets()" class="btn btn-primary">Add</button>
 
 <div>
     <h2 style="padding-top: 10px; padding-bottom: 10px;">Ticket List</h2>
     <table>
         <tr>
             <td width="5%">No#</td>
-            <td width="20%">Ticket Number</td>
+            <td width="20%">Initial Ticket Number</td>
             <td width="20%">Is Redeemed</td>
         </tr>
         <tr *ngFor="let ticket of tickets">

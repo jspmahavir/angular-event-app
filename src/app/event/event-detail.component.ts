@@ -19,6 +19,7 @@ import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_
     eventDetails:any=[];
     tickets:any=[];
     eventTicketCount:any=[];
+    ticketcount:any='';
     constructor(
         private router: Router,
         private _http: Http,
@@ -49,5 +50,14 @@ import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_
           .subscribe(result => {
             this.eventTicketCount = result.json()
           });
+      }
+
+      addMoreTickets() {
+        this._http.get('http://127.0.0.1:8000/api/events/'+ this.eventId +"/add/"+this.ticketcount,{headers: this.headers})
+          .subscribe(result => {
+            //this.eventTicketCount = result.json()
+            this.router.navigate(['events'])
+          });
+          
       }
   }
