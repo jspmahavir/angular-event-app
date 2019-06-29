@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 
 import { Event } from '.././Event';
-import { NgForm }   from '@angular/forms';
+import { NgForm }  from '@angular/forms';
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
 import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_loader';
 
 @Component({
@@ -15,6 +14,8 @@ import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_
   })
 
   export class TicketComponent implements OnInit {
+    ticketnumber:any=[];
+    ticketStatus:any=[];
     constructor(
       private router: Router,
       private _http: Http,
@@ -28,13 +29,16 @@ import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_
          
        }
 
-       onSubmit(form: NgForm): Promise <Event>{
-        var formData = JSON.stringify(form.value);
-        console.log(formData);
-        return this._http.get('http://127.0.0.1:8000/api/redeem/', {headers: this.headers})
-        .toPromise()
-                .then(res => res.json().data)
-                  .catch(this.handleError);
+       onSubmit(){
+        // return this._http.get('http://127.0.0.1:8000/api/redeem/'+this.ticketnumber, {headers: this.headers})
+        // .toPromise()
+        //         .then(res => res.json().data)
+        //           .catch(this.handleError);
+
+        return this._http.get('http://127.0.0.1:8000/api/redeem/'+this.ticketnumber)
+        .subscribe(result => {
+          this.ticketStatus = result.json().response;
+        });
       }
 
       private handleError(error: any): Promise<any> {
