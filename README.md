@@ -31,6 +31,7 @@ Run `ng github-pages:deploy` to deploy to GitHub Pages.
 To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## Steps for install 
-git clone,
-npm install,
-ng serve: it will automatically run on http://localhost:4200/
+- git clone
+- npm install
+- ng serve
+- It will automatically run on http://localhost:4200/
