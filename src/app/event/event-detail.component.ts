@@ -62,6 +62,7 @@ import { Angular2Csv } from 'angular2-csv/Angular2-csv';
       }
 
       downloadTickets() {
-        new Angular2Csv(this.tickets, 'tickets_'+this.eventId);
+        var head = ['EventId', 'TicketId', 'TicketNumber', 'IsRedeem', 'CreatedDate', 'UpdatedDate'];
+        new Angular2Csv(this.tickets, 'tickets_'+this.eventId, { headers: (head) });
       }
   }
