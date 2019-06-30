@@ -7,6 +7,7 @@ import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_loader';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 
 @Component({
     selector: 'app-event',
@@ -58,6 +59,9 @@ import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_
             //this.eventTicketCount = result.json()
             this.router.navigate(['events'])
           });
-          
+      }
+
+      downloadTickets() {
+        new Angular2Csv(this.tickets, 'tickets_'+this.eventId);
       }
   }

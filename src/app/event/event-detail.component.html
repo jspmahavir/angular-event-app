@@ -12,6 +12,11 @@ Initial No Of Tickets: {{eventDetails.ticket}}<br/><br/>
     <h2 style="padding-top: 10px; padding-bottom: 10px;">Ticket List</h2>
     <table>
         <tr>
+            <td colspan="3">
+                <button style="float: right;" type="button" (click)="downloadTickets()" class="btn btn-primary">Download as .csv</button>
+            </td>
+        </tr>
+        <tr>
             <td width="5%">No#</td>
             <td width="20%">Initial Ticket Number</td>
             <td width="20%">Is Redeemed</td>
