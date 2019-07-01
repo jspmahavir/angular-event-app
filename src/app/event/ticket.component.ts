@@ -6,6 +6,7 @@ import { NgForm }  from '@angular/forms';
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_loader';
+import { environment } from './../../environments/environment';
 
 @Component({
     selector: 'app-event',
@@ -16,6 +17,8 @@ import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_
   export class TicketComponent implements OnInit {
     ticketnumber:any=[];
     ticketStatus:any=[];
+    apiUrl:string = environment.apiurl;
+
     constructor(
       private router: Router,
       private _http: Http,
@@ -30,7 +33,7 @@ import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_
        }
 
        onSubmit(){
-        return this._http.get('http://127.0.0.1:8000/api/redeem/'+this.ticketnumber)
+        return this._http.get(this.apiUrl+'/redeem/'+this.ticketnumber)
         .subscribe(result => {
           this.ticketStatus = result.json().response;
         });

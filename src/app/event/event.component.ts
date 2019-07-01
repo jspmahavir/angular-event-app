@@ -7,6 +7,7 @@ import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_loader';
+import { environment } from './../../environments/environment';
 
 @Component({
     selector: 'app-event',
@@ -16,6 +17,7 @@ import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_
   
   export class EventComponent implements OnInit {
     eventData:any=[];
+    apiUrl:string = environment.apiurl;
     constructor(
       private router: Router,
       private _http: Http,
@@ -34,14 +36,14 @@ import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_
     }
 
     getEvents(){
-      return this._http.get('http://127.0.0.1:8000/api/events',{headers: this.headers})
+      return this._http.get(this.apiUrl+'/events',{headers: this.headers})
         .subscribe(result => {
           this.eventData = result.json()
         });
     }
 
     onSubmit(form: NgForm): Promise <Event>{
-      return this._http.post('http://127.0.0.1:8000/api/events', JSON.stringify(form.value), {headers: this.headers})
+      return this._http.post(this.apiUrl+'/events', JSON.stringify(form.value), {headers: this.headers})
       .toPromise()
               .then(res => {
                 form.reset();

@@ -8,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_loader';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
+import { environment } from './../../environments/environment';
 
 @Component({
     selector: 'app-event',
@@ -21,6 +22,7 @@ import { Angular2Csv } from 'angular2-csv/Angular2-csv';
     tickets:any=[];
     eventTicketCount:any=[];
     ticketcount:any='';
+    apiUrl:string = environment.apiurl;
     constructor(
         private router: Router,
         private _http: Http,
@@ -39,7 +41,7 @@ import { Angular2Csv } from 'angular2-csv/Angular2-csv';
       }
 
       getEventDetails() {
-        return this._http.get('http://127.0.0.1:8000/api/events/'+ this.eventId,{headers: this.headers})
+        return this._http.get(this.apiUrl+'/events/'+ this.eventId,{headers: this.headers})
           .subscribe(result => {
             this.eventDetails = result.json();
             this.tickets = this.eventDetails.tickets;
@@ -47,14 +49,14 @@ import { Angular2Csv } from 'angular2-csv/Angular2-csv';
       }
 
       getEventTicketCount() {
-        return this._http.get('http://127.0.0.1:8000/api/events/'+ this.eventId+"/count",{headers: this.headers})
+        return this._http.get(this.apiUrl+'/events/'+ this.eventId+"/count",{headers: this.headers})
           .subscribe(result => {
             this.eventTicketCount = result.json()
           });
       }
 
       addMoreTickets() {
-        this._http.get('http://127.0.0.1:8000/api/events/'+ this.eventId +"/add/"+this.ticketcount,{headers: this.headers})
+        this._http.get(this.apiUrl+'/events/'+ this.eventId +"/add/"+this.ticketcount,{headers: this.headers})
           .subscribe(result => {
             //this.eventTicketCount = result.json()
             this.router.navigate(['events'])
