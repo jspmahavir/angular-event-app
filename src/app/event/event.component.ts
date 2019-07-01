@@ -20,7 +20,7 @@ import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_
       private router: Router,
       private _http: Http,
       ) {
-        
+        this.getEvents();
        }
 
     private headers = new Headers({'Content-type': 'application/json'});
@@ -43,7 +43,10 @@ import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_
     onSubmit(form: NgForm): Promise <Event>{
       return this._http.post('http://127.0.0.1:8000/api/events', JSON.stringify(form.value), {headers: this.headers})
       .toPromise()
-              .then(res => res.json().data)
+              .then(res => {
+                form.reset();
+                this.getEvents();
+              }) 
                 .catch(this.handleError);
     }
 
