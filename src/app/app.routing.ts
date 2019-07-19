@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes  } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 import { EventComponent } from './event/event.component';
 import { EventDetailComponent } from './event/event-detail.component';
 import { TicketComponent } from './event/ticket.component';
@@ -11,6 +12,10 @@ const AppRoutes: Routes = [
     { 
       path: '', 
       component: HomeComponent
+    },
+    { 
+      path: 'signup', 
+      component: SignupFormComponent
     },
     { 
       path: 'events', 
