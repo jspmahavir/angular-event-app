@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { EventComponent } from './event/event.component';
 import { EventDetailComponent } from './event/event-detail.component';
 import { TicketComponent } from './event/ticket.component';
+import { PostsComponent } from './posts/posts.component';
 
 const AppRoutes: Routes = [
     { 
@@ -14,6 +15,10 @@ const AppRoutes: Routes = [
     { 
       path: 'events', 
       component: EventComponent
+    },
+    { 
+      path: 'posts', 
+      component: PostsComponent
     },
     { 
       path: 'event-detail/:id', 

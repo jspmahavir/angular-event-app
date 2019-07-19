@@ -8,8 +8,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { EventComponent } from './event/event.component';
 import { EventDetailComponent } from './event/event-detail.component';
+import { PostsComponent } from './posts/posts.component';
 import { TicketComponent } from './event/ticket.component';
 import { AppRoutingModule } from './app.routing';
+
+import { PostService } from './services/post.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,8 @@ import { AppRoutingModule } from './app.routing';
     HomeComponent,
     EventComponent,
     EventDetailComponent,
-    TicketComponent
+    TicketComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule, 
@@ -25,7 +29,9 @@ import { AppRoutingModule } from './app.routing';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    PostService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
