@@ -1,6 +1,6 @@
-// import { NotFoundError } from './../common/not-found-error';
-// import { BadInput } from './../common/bad-input';
-// import { AppError } from './../common/app-error';
+import { NotFoundError } from './../common/not-found-error';
+import { BadInput } from './../common/bad-input';
+import { AppError } from './../common/app-error';
 import { PostService } from './../services/post.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -30,12 +30,12 @@ export class PostsComponent implements OnInit {
           post['id'] = newPost.id;
             this.posts.splice(0, 0, post);
           },
-          // (error: AppError) => {
-          //   if (error instanceof BadInput) {
-          //     // this.form.setErrors(error.originalError);
-          //   }
-          //   else throw error;
-          // }
+          (error: AppError) => {
+            if (error instanceof BadInput) {
+              //this.form.setErrors(error.originalError);
+            }
+            else throw error;
+          }
           );
   }
 
@@ -48,17 +48,17 @@ export class PostsComponent implements OnInit {
   }
 
   deletePost(post) {
-    this.service.delete(post.id)
+    this.service.delete(345)
       .subscribe(
         () => {
           let index = this.posts.indexOf(post);
           this.posts.splice(index, 1);
         },
-        // (error: AppError) => {
-        //   if (error instanceof NotFoundError)
-        //     alert('This post has already been deleted.');
-        //   else throw error;
-        // }
+        (error: AppError) => {
+          if (error instanceof NotFoundError)
+            alert('This post has already been deleted.');
+          else throw error;
+        }
         );
   }
 }

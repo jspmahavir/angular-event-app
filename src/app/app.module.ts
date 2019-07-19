@@ -23,7 +23,7 @@ import { PostService } from './services/post.service';
     EventDetailComponent,
     TicketComponent,
     PostsComponent,
-	SignupFormComponent
+	  SignupFormComponent
   ],
   imports: [
     BrowserModule, 
